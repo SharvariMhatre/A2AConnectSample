@@ -64,11 +64,11 @@ const App: React.FC = () => {
     </button>
   );
 
-  // SecondaryButton: Transparent bg, border #D6D3C4, text #D6D3C4
+  // SecondaryButton: Transparent bg, border #D6D3C4/50, text #D6D3C4
   const SecondaryButton: React.FC<ButtonProps> = ({ children, onClick, className = "" }) => (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-xl font-bold transition-all border border-[#D6D3C4] text-[#D6D3C4] hover:bg-[#D6D3C4]/10 ${className}`}
+      className={`px-6 py-3 rounded-xl font-bold transition-all border border-[#D6D3C4]/50 text-[#D6D3C4] hover:bg-[#D6D3C4]/10 ${className}`}
     >
       {children}
     </button>
@@ -85,7 +85,7 @@ const App: React.FC = () => {
         </div>
         <input
           type={type}
-          className="w-full bg-[#202020] border border-[#535353] text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-[#D6D3C4] focus:ring-1 focus:ring-[#D6D3C4] transition-all placeholder-[#707070]"
+          className="w-full bg-[#202020] border border-[#535353] text-white rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-[#D6D3C4] focus:ring-1 focus:ring-[#D6D3C4] transition-all placeholder-[#535353]"
           placeholder={placeholder}
         />
       </div>
@@ -99,8 +99,8 @@ const App: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#000000]">
       {/* Background: Maroon orb (top-right), Navy orb (bottom-left) */}
       <div className="absolute top-0 left-0 w-full h-full bg-[#000000] z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#500000] rounded-full blur-[150px] opacity-40"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#2F3E51] rounded-full blur-[150px] opacity-20"></div>
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#500000] rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#2F3E51] rounded-full blur-[120px] opacity-20"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-md">
@@ -112,15 +112,15 @@ const App: React.FC = () => {
         <GlassCard className="p-8 border-t border-t-[#D6D3C4]/30">
           <div className="text-center mb-8">
             {/* Header: "Welcome Back" with Gradient text White to Gray */}
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#707070] mb-2">
+            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D1D1D1] mb-2">
               Welcome Back
             </h2>
             <p className="text-[#D1D1D1] text-sm">Sign in to continue your Aggie journey</p>
           </div>
 
           <form onSubmit={(e) => e.preventDefault()}>
-            <InputField icon={Mail} type="email" label="Email" placeholder="user@tamu.edu" />
-            <InputField icon={Lock} type="password" label="Password" placeholder="Enter your password" />
+            <InputField icon={Mail} type="text" label="Aggie ID or Email" placeholder="user@tamu.edu" />
+            <InputField icon={Lock} type="password" label="Password" placeholder="••••••••" />
 
             <div className="flex justify-end mb-6">
               {/* Forgot Password link (Ochre) */}
@@ -168,9 +168,9 @@ const App: React.FC = () => {
           </div>
 
           <form onSubmit={(e) => e.preventDefault()}>
-            <InputField icon={Mail} type="email" label="Email" placeholder="user@tamu.edu" />
-            <InputField icon={Lock} type="password" label="Password" placeholder="Create a password" />
-            <InputField icon={Lock} type="password" label="Confirm Password" placeholder="Confirm your password" />
+            <InputField icon={Mail} type="text" label="Aggie ID or Email" placeholder="user@tamu.edu" />
+            <InputField icon={Lock} type="password" label="Password" placeholder="••••••••" />
+            <InputField icon={Lock} type="password" label="Confirm Password" placeholder="••••••••" />
 
             {/* Create Account button (Maroon, full width) */}
             <PrimaryButton type="submit" className="w-full mb-4 mt-6">Create Account</PrimaryButton>
