@@ -4,6 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-aggie-gray-100 text-gray-900;
+    @apply bg-black text-white;
+    margin: 0;
+    padding: 0;
   }
 }

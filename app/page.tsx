@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
+import AppMain from '../components/AppMain';
 
-// Root page - redirect to dashboard
+// Root page - single page app with state management
 export default function Home() {
-  redirect('/dashboard');
+  return <AppMain />;
 }
