@@ -14,12 +14,26 @@ const NAV_ITEMS = [
 export default function Sidebar() {
   const pathname = usePathname();
 
+  // TODO: wire this up to your real logout logic (NextAuth signOut, n8n, etc.)
+  const handleLogout = () => {
+    console.log('Logout clicked');
+    // e.g. await signOut();
+  };
+
   return (
-    <aside className="w-64 bg-white h-screen shadow-lg fixed left-0 top-0 flex flex-col">
+    <aside
+      className="
+        w-64 h-screen fixed left-0 top-0 flex flex-col
+        bg-[#121212]/95 border-r border-[#2a2a2a]
+        backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.8)]
+      "
+    >
       {/* Logo / Header */}
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-primary-600">CMIS Portal</h1>
-        <p className="text-sm text-gray-500 mt-1">Engagement Platform</p>
+      <div className="p-6 border-b border-[#2a2a2a]">
+        <h1 className="text-2xl font-bold text-white">
+          Aggie2Aggie <span className="text-[#D6D3C4]">Connect</span>
+        </h1>
+        <p className="text-sm text-[#b0b0b0] mt-1">Engagement Platform</p>
       </div>
 
       {/* Navigation */}
@@ -27,18 +41,22 @@ export default function Sidebar() {
         <ul className="space-y-2">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
+
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   className={`
-                    flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
+                    flex items-center gap-3 px-4 py-3 rounded-lg
+                    border
+                    transition-all duration-150 ease-out
+                    active:scale-[0.97] active:translate-y-[1px]
                     ${
                       isActive
-                        ? 'bg-primary-100 text-primary-700 font-semibold'
-                        : 'text-gray-700 hover:bg-gray-100'
+                        ? 'bg-white/14 text-white font-semibold border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.7)]'
+                        : 'bg-transparent text-[#d1d1d1] border-transparent hover:bg-white/8 hover:text-white hover:border-white/20 hover:shadow-[0_8px_22px_rgba(0,0,0,0.6)]'
                     }
-                    ${item.gaOnly ? 'border-t border-gray-200 mt-4 pt-4' : ''}
+                    ${item.gaOnly ? 'border-t border-[#2a2a2a] mt-4 pt-4' : ''}
                   `}
                 >
                   <span className="text-xl">{item.icon}</span>
@@ -50,9 +68,29 @@ export default function Sidebar() {
         </ul>
       </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-gray-200 text-xs text-gray-500">
-        <p>&copy; 2025 CMIS</p>
+      {/* Footer with Logout */}
+      <div className="p-4 border-t border-[#2a2a2a] space-y-3">
+        <button
+          onClick={handleLogout}
+          className="
+            w-full px-4 py-2 rounded-lg
+            flex items-center justify-center gap-2
+            text-sm font-medium
+            bg-[#2a2a2a] text-[#f5f5f5]
+            border border-white/10
+            hover:bg-[#ff4444]/90 hover:text-white hover:border-[#ff8888]
+            transition-all duration-150 ease-out
+            active:scale-[0.97] active:translate-y-[1px]
+            shadow-[0_6px_18px_rgba(0,0,0,0.6)]
+          "
+        >
+          <span>⏏</span>
+          <span>Logout</span>
+        </button>
+
+        <p className="text-xs text-[#707070]">
+          &copy; 2025 CMIS
+        </p>
       </div>
     </aside>
   );
